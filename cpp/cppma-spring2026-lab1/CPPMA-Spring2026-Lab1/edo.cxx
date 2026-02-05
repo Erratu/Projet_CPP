@@ -2,24 +2,63 @@
 #include <cstdlib>
 #include <iostream>
 
+double *sol_1(int, double *, double *);
+double *euler_implicite_1(int, float, double *, double *, double (*phi)(double, double));
+double phi(double, double);
+using std::cout;
+
 int main() {
+    int a = 0;
+    int b = 1;
     float u0 = 1;
     int length = 1;
+    int n;
 
-    int n_h = 100;
-    float h = length/100;
+    int n_h = 20;
+    float h = length/n_h;
+
+    double *u = (double *)calloc(n_h, sizeof(double));
+    double *x = (double *)calloc(n_h, sizeof(double));
+    for (n = 0;n <= n_h; n++)
+        x[n] = a + n*h; // problème : que des 0
+    u[0] = 1;
+
+    u = euler_implicite_1(n_h,h,u,x,*phi);
+
+    double *u_analytic = (double *)calloc(n_h, sizeof(double));
+    u_analytic = sol_1(n_h,u,x);
+
+    cout << "x : " << std::endl;
+    for (n = 0;n <= n_h; n++)
+        cout << x[n] << std::endl;
+
+    cout << "u avec Euler implicite : " << std::endl;
+    for (n = 0;n <= n_h; n++)
+        cout << u[n] << std::endl;
+    cout << "u avec solution analytique : " << std::endl;
+    for (n = 0;n <= n_h; n++)
+        cout << u_analytic[n] << std::endl;
+    cout << "différences : " << std::endl;
+    for (n = 0;n <= n_h; n++)
+        cout << u[n]-u_analytic[n] << std::endl;
 
     return 0;
 }
 
-float *sol_1(float);
-
-float *euler_implicite_1(int, float, float);
-
-float *euler_implicite_1(int nb_it, float h, float *un) {
-    *un = 1;
+double *euler_implicite_1(int n_h, float h, double *u, double *x, double (*phi)(double, double)) {
     int n;
-    for (n = 0; n <= nb_it; n++)
-        *un = *un*(1+h*h*n);
-    return un;
+    for (n = 0; n <= n_h; n++)
+        u[n+1] = u[n] + h*phi(x[n],u[n]);
+    return u;
+}
+
+double *sol_1(int n_h, double *u, double *x) {
+    int n;
+    for (n = 0; n <= n_h; n++)
+        u[n] = exp(x[n]*x[n]);
+    return u;
+}
+
+double phi(double x, double u) {
+    return 2*x*u;
 }
