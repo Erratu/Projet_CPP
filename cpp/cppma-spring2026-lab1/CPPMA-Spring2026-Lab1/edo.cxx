@@ -3,27 +3,27 @@
 #include <iostream>
 
 double *sol_1(int, double *, double *);
-double *euler_implicite_1(int, float, double *, double *, double (*phi)(double, double));
+double *euler_explicite_1(int, double, double *, double *, double (*phi)(double, double));
 double phi(double, double);
 using std::cout;
 
 int main() {
-    int a = 0;
-    int b = 1;
-    float u0 = 1;
+    double a = 0;
+    double b = 1;
+    double u0 = 1;
     int length = 1;
     int n;
 
     int n_h = 20;
-    float h = length/n_h;
+    double h = (double)length/n_h;
 
     double *u = (double *)calloc(n_h, sizeof(double));
     double *x = (double *)calloc(n_h, sizeof(double));
     for (n = 0;n <= n_h; n++)
-        x[n] = a + n*h; // problème : que des 0
+        x[n] = a + n*h; 
     u[0] = 1;
 
-    u = euler_implicite_1(n_h,h,u,x,*phi);
+    u = euler_explicite_1(n_h,h,u,x,*phi);
 
     double *u_analytic = (double *)calloc(n_h, sizeof(double));
     u_analytic = sol_1(n_h,u,x);
@@ -32,7 +32,7 @@ int main() {
     for (n = 0;n <= n_h; n++)
         cout << x[n] << std::endl;
 
-    cout << "u avec Euler implicite : " << std::endl;
+    cout << "u avec Euler explicite : " << std::endl;
     for (n = 0;n <= n_h; n++)
         cout << u[n] << std::endl;
     cout << "u avec solution analytique : " << std::endl;
@@ -45,7 +45,7 @@ int main() {
     return 0;
 }
 
-double *euler_implicite_1(int n_h, float h, double *u, double *x, double (*phi)(double, double)) {
+double *euler_explicite_1(int n_h, double h, double *u, double *x, double (*phi)(double, double)) {
     int n;
     for (n = 0; n <= n_h; n++)
         u[n+1] = u[n] + h*phi(x[n],u[n]);
