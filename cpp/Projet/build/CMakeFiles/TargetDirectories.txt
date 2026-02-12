@@ -1,0 +1,3 @@
+/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles/exe.dir
+/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles/edit_cache.dir
+/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles/rebuild_cache.dir
