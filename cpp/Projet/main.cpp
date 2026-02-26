@@ -3,7 +3,7 @@
 #include <iostream>
 #include <list>
 
-#include "include/particule.hpp"
+#include "particule.hpp"
 
 int main() {
     std::random_device rd;
@@ -27,4 +27,18 @@ int main() {
     //std::cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
 
     return 0;
+}
+
+void StrömerVerlet(std::list<Particule>& particleList, float dt) {
+    for (auto& p : particleList) {
+        // Mise à jour de la position
+        p.x += p.vx * dt + 0.5f * p.forceX / p.masse * dt * dt;
+        p.y += p.vy * dt + 0.5f * p.forceY / p.masse * dt * dt;
+        p.z += p.vz * dt + 0.5f * p.forceZ / p.masse * dt * dt;
+
+        // Mise à jour de la vitesse
+        p.vx += 0.5f * p.forceX / p.masse * dt;
+        p.vy += 0.5f * p.forceY / p.masse * dt;
+        p.vz += 0.5f * p.forceZ / p.masse * dt;
+    }
 }

@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/user/2/maleta/Documents/TPs/cpp/Projet/build",
+  "command": "/usr/bin/c++ -I/user/2/maleta/Documents/TPs/cpp/Projet/include -Wall -g -std=gnu++17 -o CMakeFiles/Lab3.dir/main.cpp.o -c /user/2/maleta/Documents/TPs/cpp/Projet/main.cpp",
+  "file": "/user/2/maleta/Documents/TPs/cpp/Projet/main.cpp",
+  "output": "CMakeFiles/Lab3.dir/main.cpp.o"
+},
+{
+  "directory": "/user/2/maleta/Documents/TPs/cpp/Projet/build",
+  "command": "/usr/bin/c++ -I/user/2/maleta/Documents/TPs/cpp/Projet/include -Wall -g -std=gnu++17 -o src/CMakeFiles/particules.dir/particule.cpp.o -c /user/2/maleta/Documents/TPs/cpp/Projet/src/particule.cpp",
+  "file": "/user/2/maleta/Documents/TPs/cpp/Projet/src/particule.cpp",
+  "output": "src/CMakeFiles/particules.dir/particule.cpp.o"
+},
+{
+  "directory": "/user/2/maleta/Documents/TPs/cpp/Projet/build",
+  "command": "/usr/bin/c++ -I/user/2/maleta/Documents/TPs/cpp/Projet/include -Wall -g -std=gnu++17 -o src/CMakeFiles/particules.dir/univers.cpp.o -c /user/2/maleta/Documents/TPs/cpp/Projet/src/univers.cpp",
+  "file": "/user/2/maleta/Documents/TPs/cpp/Projet/src/univers.cpp",
+  "output": "src/CMakeFiles/particules.dir/univers.cpp.o"
+}
+]
