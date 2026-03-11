@@ -4,6 +4,7 @@
 add_library(particules 
     particule.cpp
     univers.cpp
+    vecteur.cpp
 )
 
 target_include_directories(particules PUBLIC

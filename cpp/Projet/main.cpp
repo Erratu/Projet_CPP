@@ -12,15 +12,13 @@ int main() {
 
     //auto start = std::chrono::steady_clock::now();
     
-    std::list<Particule> particleList;
+    Univers u1 = new Univers(2);
 
-    for (int i=0; i<2; ++i) {
-        particleList.emplace_back(dist(mt), dist(mt), dist(mt), dist(mt), dist(mt), dist(mt), dist(mt), i, "Ab", dist(mt), dist(mt), dist(mt));
-    };
-
-    for (auto& p : particleList) { 
+    for (auto& p : u1.particules) { 
         p.afficher();
     }
+
+    sys_base_test();
 
     //auto end = std::chrono::steady_clock::now();
     //std::chrono::duration<double> elapsed_seconds = end-start;
@@ -29,16 +27,48 @@ int main() {
     return 0;
 }
 
-void StrömerVerlet(std::list<Particule>& particleList, float dt) {
-    for (auto& p : particleList) {
-        // Mise à jour de la position
-        p.x += p.vx * dt + 0.5f * p.forceX / p.masse * dt * dt;
-        p.y += p.vy * dt + 0.5f * p.forceY / p.masse * dt * dt;
-        p.z += p.vz * dt + 0.5f * p.forceZ / p.masse * dt * dt;
+void sys_base_test() {
+    // Soleil
+    particleList.emplace_back(
+        0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0,
+        1.0,
+        0, "Soleil"
+    );
 
-        // Mise à jour de la vitesse
-        p.vx += 0.5f * p.forceX / p.masse * dt;
-        p.vy += 0.5f * p.forceY / p.masse * dt;
-        p.vz += 0.5f * p.forceZ / p.masse * dt;
+    // Terre
+    particleList.emplace_back(
+        0.0, 1.0, 0.0,
+        -1.0, 0.0, 0.0,
+        3.0e-6,
+        1, "Terre"
+    );
+
+    // Jupiter
+    particleList.emplace_back(
+        0.0, 5.36, 0.0,
+        -0.425, 0.0, 0.0,
+        9.55e-4,
+        2, "Jupiter"
+    );
+
+    // Halley
+    particleList.emplace_back(
+        34.75, 0.0, 0.0,
+        0.0, 0.0296, 0.0,
+        1e-14,
+        3, "Halley"
+    );
+
+    Univers u2 = new Univers(particleList);
+
+    for (auto& p : u2.particules) { 
+        p.afficher();
+    }
+
+    u2.algoStormerVerlet();
+
+    for (auto& p : u2.particules) { 
+        p.afficher();
     }
 }
