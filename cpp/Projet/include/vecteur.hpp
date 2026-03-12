@@ -18,9 +18,11 @@ public:
 
     friend Vecteur operator+(Vecteur v1, const Vecteur& v2);
     friend Vecteur operator-(Vecteur v1, const Vecteur& v2);
+    friend Vecteur operator*(Vecteur v, double scalaire);
     friend Vecteur operator*(double scalaire, const Vecteur& v);
 
-    double produitScalaire(const Vecteur& autre) const;
+    friend std::ostream& operator<<(std::ostream& os, const Vecteur& v);
+    friend std::istream& operator<<(std::istream& is, Vecteur& v);
 
     void afficher() const;
 }
