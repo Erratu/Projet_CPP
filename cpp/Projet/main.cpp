@@ -12,7 +12,7 @@ int main() {
 
     //auto start = std::chrono::steady_clock::now();
     
-    Univers u1 = new Univers(2);
+    Univers u1{2};
 
     for (auto& p : u1.particules) { 
         p.afficher();
@@ -28,6 +28,9 @@ int main() {
 }
 
 void sys_base_test() {
+
+    std::list<Particule> particleList;
+
     // Soleil
     particleList.emplace_back(
         0.0, 0.0, 0.0,
@@ -60,7 +63,7 @@ void sys_base_test() {
         3, "Halley"
     );
 
-    Univers u2 = new Univers(particleList);
+    Univers u2{particleList};
 
     for (auto& p : u2.particules) { 
         p.afficher();

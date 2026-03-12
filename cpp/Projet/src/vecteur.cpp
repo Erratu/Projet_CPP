@@ -1,17 +1,44 @@
 #include "vecteur.hpp"
 #include <iostream>
 
-Vecteur operator+(const Vecteur& v) const {
+Vecteur& operator=(const Vecteur& autre) {
+    if (this != &v) {
+        x = autre.x;
+        y = autre.y;
+        z = autre.z;
+    }
+    return *this;
+}
 
+Vecteur operator+=(const Vecteur& autre) {
+    x += autre.x;
+    y += autre.y;
+    z += autre.z;
+    return *this;
 };
-Vecteur operator-(const Vecteur& v) const {
+
+friend Vecteur operator+(Vecteur v1, const Vecteur& v2) {
+    v1 += v2;
+    return v1;
+};
+
+Vecteur operator-=(const Vecteur& autre) const {
+    x -= autre.x;
+    y -= autre.y;
+    z -= autre.z;
+    return *this;
+};
+
+friend Vecteur operator-(Vecteur v1, const Vecteur& v2) {
+    v1 -= v2;
+    return v1;
+};
+
+friend Vecteur operator*(double scalaire, const Vecteur& v) {
     
 };
-Vecteur operator*(double scalaire) const {
 
-};
-
-float produitScalaire(const Vecteur& v) const {
+double produitScalaire(const Vecteur& autre) const {
     
 };
 

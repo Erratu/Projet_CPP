@@ -1,5 +1,6 @@
 #include "univers.hpp"
 #include <iostream>
+#include <fstream>
 
 void Univers::calculerForces() {
     for (auto &p : particules) {
@@ -24,7 +25,7 @@ void Univers::calculerForces() {
 
             double inv_r3 = 1.0 / (r2 * r);
 
-            double f = it_i->m * it_j->m * inv_r3;
+            double f = it_i->masse * it_j->masse * inv_r3;
 
             double fx = f * dx;
             double fy = f * dy;
@@ -58,18 +59,18 @@ void Univers::algoStormerVerlet(double t_end=468.5, double dt = 0.015) {
             fy_old.push_back(p.fy);
             fz_old.push_back(p.fz);
 
-            p.x += dt * (p.vx + 0.5 / p.m * p.fx * dt);
-            p.y += dt * (p.vy + 0.5 / p.m * p.fy * dt);
-            p.z += dt * (p.vz + 0.5 / p.m * p.fz * dt);
+            p.x += dt * (p.vx + 0.5 / p.masse * p.fx * dt);
+            p.y += dt * (p.vy + 0.5 / p.masse * p.fy * dt);
+            p.z += dt * (p.vz + 0.5 / p.masse * p.fz * dt);
         }
 
         calculerForces();
 
         int i = 0;
         for (auto &p : particules) {
-            p.vx += dt * 0.5 / p.m * (p.fx + fx_old[i]);
-            p.vy += dt * 0.5 / p.m * (p.fy + fy_old[i]);
-            p.vz += dt * 0.5 / p.m * (p.fz + fz_old[i]);
+            p.vx += dt * 0.5 / p.masse * (p.fx + fx_old[i]);
+            p.vy += dt * 0.5 / p.masse * (p.fy + fy_old[i]);
+            p.vz += dt * 0.5 / p.masse * (p.fz + fz_old[i]);
             i++;
         }
 

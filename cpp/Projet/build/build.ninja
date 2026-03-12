@@ -124,6 +124,13 @@ build src/CMakeFiles/particules.dir/univers.cpp.o: CXX_COMPILER__particules_unsc
   OBJECT_DIR = src/CMakeFiles/particules.dir
   OBJECT_FILE_DIR = src/CMakeFiles/particules.dir
 
+build src/CMakeFiles/particules.dir/vecteur.cpp.o: CXX_COMPILER__particules_unscanned_Debug /user/2/maleta/Documents/TPs/cpp/Projet/src/vecteur.cpp || cmake_object_order_depends_target_particules
+  DEP_FILE = src/CMakeFiles/particules.dir/vecteur.cpp.o.d
+  FLAGS = -Wall -g -std=gnu++17
+  INCLUDES = -I/user/2/maleta/Documents/TPs/cpp/Projet/include
+  OBJECT_DIR = src/CMakeFiles/particules.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/particules.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target particules
@@ -132,7 +139,7 @@ build src/CMakeFiles/particules.dir/univers.cpp.o: CXX_COMPILER__particules_unsc
 #############################################
 # Link the static library src/libparticules.a
 
-build src/libparticules.a: CXX_STATIC_LIBRARY_LINKER__particules_Debug src/CMakeFiles/particules.dir/particule.cpp.o src/CMakeFiles/particules.dir/univers.cpp.o
+build src/libparticules.a: CXX_STATIC_LIBRARY_LINKER__particules_Debug src/CMakeFiles/particules.dir/particule.cpp.o src/CMakeFiles/particules.dir/univers.cpp.o src/CMakeFiles/particules.dir/vecteur.cpp.o
   LANGUAGE_COMPILE_FLAGS = -Wall -g
   OBJECT_DIR = src/CMakeFiles/particules.dir
   POST_BUILD = :

@@ -2,6 +2,7 @@
 #include <random>
 #include "particule.hpp"
 // essayer vector, plus rapide
+// mettre en private et surcharge pour getter/setter
 class Univers {
 public:
     std::list<Particule> particules;
@@ -15,14 +16,14 @@ public:
         std::uniform_real_distribution<double> dist(0.0, 1.0);
 
         for (int i=0; i<nb_particules; ++i) {
-            particules.emplace_back(Particule(
+            particules.emplace_back(Particule{
                 dist(mt), dist(mt), dist(mt), 
                 dist(mt), dist(mt), dist(mt), 
-                dist(mt), i, "Ab"));
+                dist(mt), i, "Ab"});
         }
     }
 
-    Univers(list<Particule> ps) {
-        particules = ps
+    Univers(std::list<Particule> ps) {
+        particules = ps;
     }
 };
