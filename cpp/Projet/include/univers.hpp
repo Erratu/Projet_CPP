@@ -6,11 +6,12 @@
 class Univers {
 public:
     std::list<Particule> particules;
+    int dim; // Dimension de l'espace
 
     void calculerForces();              
     void algoStormerVerlet(double t_end = 468.5, double dt = 0.015);   
     
-    Univers(int nb_particules) {
+    Univers(int nb_particules, int dimension = 3) : dim(dimension) {
         std::random_device rd;
         std::mt19937 mt(rd());
         std::uniform_real_distribution<double> dist(0.0, 1.0);

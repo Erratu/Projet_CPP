@@ -1,12 +1,14 @@
+#include "vecteur.hpp"
+
 class Particule {
 public:
 
-    double x, y, z; // Position
-    double vx, vy, vz; // Vitesse
+    Vecteur pos;
+    Vecteur v;
+    Vecteur f;
     double masse; // Masse
     int id; // Identifiant unique
     const char* type; // Catégorie de la particule
-    double fx, fy, fz; // Force appliquée à la particule
 
     void afficher();
     
@@ -14,7 +16,11 @@ public:
             double vy, double vz, double masse, 
             int id, const char* type, 
             double forceX=0, double forceY=0, double forceZ=0) : 
-        x(x), y(y), z(z), vx(vx), vy(vy), vz(vz),
-        masse(masse), id(id), type(type),
-        fx(forceX), fy(forceY), fz(forceZ) {}
+        pos(x, y, z), v(vx, vy, vz), f(forceX, forceY, forceZ),
+        masse(masse), id(id), type(type) {}
+
+    Particule(Vecteur position, Vecteur vitesse, Vecteur force, double masse, 
+            int id, const char* type) : 
+        pos(position), v(vitesse), f(force),
+        masse(masse), id(id), type(type) {}
 };

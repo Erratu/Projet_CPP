@@ -42,7 +42,7 @@ void Univers::calculerForces() {
     }
 };    
 
-void Univers::algoStormerVerlet(double t_end=468.5, double dt = 0.015) {
+void Univers::algoStormerVerlet(double t_end, double dt) {
     std::ofstream file("positions_astres.txt");
     double t = 0.0;
 
@@ -75,9 +75,9 @@ void Univers::algoStormerVerlet(double t_end=468.5, double dt = 0.015) {
         }
 
         for (auto &p : particules) {
-            std::cout << t << " "
-                      << p.x << " "
-                      << p.y << std::endl;
+            //std::cout << t << " "
+            //          << p.x << " "
+            //          << p.y << std::endl;
 
             file << p.x << " " << p.y << " ";
         }

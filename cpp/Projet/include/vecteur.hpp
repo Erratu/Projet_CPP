@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Vecteur {
 public:
     double x;
@@ -14,7 +16,7 @@ public:
 
     Vecteur& operator+=(const Vecteur& autre);
     Vecteur& operator-=(const Vecteur& autre);
-    Vecteur& operator*=(const Vecteur& autre);
+    Vecteur& operator*=(double scalaire);
 
     friend Vecteur operator+(Vecteur v1, const Vecteur& v2);
     friend Vecteur operator-(Vecteur v1, const Vecteur& v2);
@@ -22,7 +24,7 @@ public:
     friend Vecteur operator*(double scalaire, const Vecteur& v);
 
     friend std::ostream& operator<<(std::ostream& os, const Vecteur& v);
-    friend std::istream& operator<<(std::istream& is, Vecteur& v);
+    friend std::istream& operator>>(std::istream& is, Vecteur& v);
 
     void afficher() const;
-}
+};

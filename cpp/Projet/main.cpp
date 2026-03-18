@@ -3,7 +3,9 @@
 #include <iostream>
 #include <list>
 
-#include "particule.hpp"
+#include "univers.hpp"
+
+void sys_base_test();
 
 int main() {
     std::random_device rd;

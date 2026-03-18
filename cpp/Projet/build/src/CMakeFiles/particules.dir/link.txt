@@ -1,0 +1,2 @@
+/usr/bin/ar qc libparticules.a CMakeFiles/particules.dir/particule.cpp.o CMakeFiles/particules.dir/univers.cpp.o CMakeFiles/particules.dir/vecteur.cpp.o
+/usr/bin/ranlib libparticules.a
