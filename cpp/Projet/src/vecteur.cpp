@@ -1,10 +1,10 @@
 #include "vecteur.hpp"
 
-Vecteur& Vecteur::operator=(const Vecteur& autre) {
+Vecteur<D>& Vecteur<D>::operator=(const Vecteur<D>& autre) {
     if (this != &autre) {
-        x = autre.x;
-        y = autre.y;
-        z = autre.z;
+        for (int i = 0; i < D; ++i) {
+            coords[i] = autre.coords[i];
+        }
     }
     return *this;
 }

@@ -1,16 +1,29 @@
 #include <iostream>
 
+template<int D>
 class Vecteur {
 public:
-    double x;
-    double y;
-    double z;
+    double coords[D];
 
-    Vecteur(double x = 0.0, double y = 0.0, double z = 0.0) : x(x), y(y), z(z) {};
+    Vecteur(const double val[D]) : {
+        for (int i = 0; i < D; ++i) {
+            coords[i] = val[i];
+        }
+    };
+
+    Vecteur() {
+        for (int i = 0; i < D; ++i) {
+            coords[i] = 0.0;
+        }
+    };
 
     ~Vecteur() = default;
 
-    Vecteur(const Vecteur& v) : x(v.x), y(v.y), z(v.z) {};
+    Vecteur(const Vecteur& v) : {
+        for (int i = 0; i < D; ++i) {
+            coords[i] = v.coords[i];
+        }
+    };
 
     Vecteur& operator=(const Vecteur& autre);
 

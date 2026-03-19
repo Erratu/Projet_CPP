@@ -4,9 +4,9 @@
 
 void Univers::calculerForces() {
     for (auto &p : particules) {
-        p.fx = 0.0;
-        p.fy = 0.0;
-        p.fz = 0.0;
+        p.f.x = 0.0;
+        p.f.x = 0.0;
+        p.f.x = 0.0;
     }
 
     for (auto it_i = particules.begin(); it_i != particules.end(); ++it_i) {
@@ -16,9 +16,9 @@ void Univers::calculerForces() {
 
         for (; it_j != particules.end(); ++it_j) {
 
-            double dx = it_j->x - it_i->x;
-            double dy = it_j->y - it_i->y;
-            double dz = it_j->z - it_i->z;
+            double dx = it_j->pos.x - it_i->pos.x;
+            double dy = it_j->pos.y - it_i->pos.y;
+            double dz = it_j->pos.z - it_i->pos.z;
 
             double r2 = dx*dx + dy*dy + dz*dz;
             double r = std::sqrt(r2);
@@ -31,13 +31,13 @@ void Univers::calculerForces() {
             double fy = f * dy;
             double fz = f * dz;
 
-            it_i->fx += fx;
-            it_i->fy += fy;
-            it_i->fz += fz;
+            it_i->f.x += fx;
+            it_i->f.y += fy;
+            it_i->f.z += fz;
 
-            it_j->fx -= fx;
-            it_j->fy -= fy;
-            it_j->fz -= fz;
+            it_j->f.x -= fx;
+            it_j->f.y -= fy;
+            it_j->f.z -= fz;
         }
     }
 };    
@@ -55,22 +55,22 @@ void Univers::algoStormerVerlet(double t_end, double dt) {
 
         for (auto &p : particules) {
 
-            fx_old.push_back(p.fx);
-            fy_old.push_back(p.fy);
-            fz_old.push_back(p.fz);
+            fx_old.push_back(p.f.x);
+            fy_old.push_back(p.f.y);
+            fz_old.push_back(p.f.z);
 
-            p.x += dt * (p.vx + 0.5 / p.masse * p.fx * dt);
-            p.y += dt * (p.vy + 0.5 / p.masse * p.fy * dt);
-            p.z += dt * (p.vz + 0.5 / p.masse * p.fz * dt);
+            p.pos.x += dt * (p.v.x + 0.5 / p.masse * p.f.x * dt);
+            p.pos.y += dt * (p.v.y + 0.5 / p.masse * p.f.y * dt);
+            p.pos.z += dt * (p.v.z + 0.5 / p.masse * p.f.z * dt);
         }
 
         calculerForces();
 
         int i = 0;
         for (auto &p : particules) {
-            p.vx += dt * 0.5 / p.masse * (p.fx + fx_old[i]);
-            p.vy += dt * 0.5 / p.masse * (p.fy + fy_old[i]);
-            p.vz += dt * 0.5 / p.masse * (p.fz + fz_old[i]);
+            p.v.x += dt * 0.5 / p.masse * (p.f.x + fx_old[i]);
+            p.v.y += dt * 0.5 / p.masse * (p.f.y + fy_old[i]);
+            p.v.z += dt * 0.5 / p.masse * (p.f.z + fz_old[i]);
             i++;
         }
 
@@ -79,7 +79,7 @@ void Univers::algoStormerVerlet(double t_end, double dt) {
             //          << p.x << " "
             //          << p.y << std::endl;
 
-            file << p.x << " " << p.y << " ";
+            file << p.pos.x << " " << p.pos.y << " " << p.pos.z << " ";
         }
         file << "\n";
     }
