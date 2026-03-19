@@ -1,6 +1,7 @@
 CMakeFiles/Lab3.dir/main.cpp.o: \
- /home/anna/Documents/TPs/cpp/Projet/main.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/13/random /usr/include/c++/13/bits/requires_hosted.h \
+ /user/2/maleta/Documents/TPs/cpp/Projet/main.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/13/random \
+ /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -192,6 +193,6 @@ CMakeFiles/Lab3.dir/main.cpp.o: \
  /usr/include/c++/13/bits/allocated_ptr.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/list.tcc \
- /home/anna/Documents/TPs/cpp/Projet/include/univers.hpp \
- /home/anna/Documents/TPs/cpp/Projet/include/particule.hpp \
- /home/anna/Documents/TPs/cpp/Projet/include/vecteur.hpp
+ /user/2/maleta/Documents/TPs/cpp/Projet/include/univers.hpp \
+ /user/2/maleta/Documents/TPs/cpp/Projet/include/particule.hpp \
+ /user/2/maleta/Documents/TPs/cpp/Projet/include/vecteur.hpp

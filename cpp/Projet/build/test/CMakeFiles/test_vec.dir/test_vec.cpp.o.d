@@ -1,7 +1,7 @@
 test/CMakeFiles/test_vec.dir/test_vec.cpp.o: \
- /home/anna/Documents/TPs/cpp/Projet/test/test_vec.cpp \
+ /user/2/maleta/Documents/TPs/cpp/Projet/test/test_vec.cpp \
  /usr/include/stdc-predef.h \
- /home/anna/Documents/TPs/cpp/Projet/include/vecteur.hpp \
+ /user/2/maleta/Documents/TPs/cpp/Projet/include/vecteur.hpp \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

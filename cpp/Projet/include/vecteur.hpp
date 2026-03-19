@@ -1,4 +1,5 @@
 #include <iostream>
+#include <initializer_list>
 
 template<int D>
 class Vecteur {
@@ -9,6 +10,10 @@ public:
         for (int i = 0; i < D; ++i) {
             coords[i] = val[i];
         }
+    };
+
+    Vecteur(std::initializer_list<double> vals) {
+        std::copy(vals.begin(), vals.end(), coords);
     };
 
     Vecteur() {

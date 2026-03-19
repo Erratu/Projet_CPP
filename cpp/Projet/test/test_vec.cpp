@@ -4,9 +4,9 @@
 int main()
 {
     // Test constructeur
-    Vecteur v1;
-    Vecteur v2(1, 2, 3);
-    Vecteur v3(4, 5, 6);
+    Vecteur<3> v1;
+    Vecteur<3> v2{1, 2, 3};
+    Vecteur<3> v3{4, 5, 6};
 
     std::cout << "Vecteur v1 : ";
     v1.afficher();
@@ -18,17 +18,17 @@ int main()
     v3.afficher();
 
     // Test addition
-    Vecteur v4 = v2 + v3;
+    Vecteur<3> v4 = v2 + v3;
     std::cout << "v2 + v3 = ";
     v4.afficher();
 
     // Test soustraction
-    Vecteur v5 = v3 - v2;
+    Vecteur<3> v5 = v3 - v2;
     std::cout << "v3 - v2 = ";
     v5.afficher();
 
     // Test multiplication scalaire
-    Vecteur v6 = v2 * 2;
+    Vecteur<3> v6 = v2 * 2;
     std::cout << "v2 * 2 = ";
     v6.afficher();
 

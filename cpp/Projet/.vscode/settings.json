@@ -1,3 +1,6 @@
 {
-    "C_Cpp.default.compilerPath": "ms-vscode.cmake-tools"
+    "C_Cpp.default.compilerPath": "ms-vscode.cmake-tools",
+    "cmake.configureSettings": {
+        "CMAKE_CXX_COMPILER": "/usr/bin/g++"
+    }
 }

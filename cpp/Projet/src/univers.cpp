@@ -2,7 +2,8 @@
 #include <iostream>
 #include <fstream>
 
-void Univers::calculerForces() {
+template <int D>
+void Univers<D>::calculerForces() {
     for (auto &p : particules) {
         p.f.x = 0.0;
         p.f.x = 0.0;
@@ -42,7 +43,8 @@ void Univers::calculerForces() {
     }
 };    
 
-void Univers::algoStormerVerlet(double t_end, double dt) {
+template <int D>
+void Univers<D>::algoStormerVerlet(double t_end, double dt) {
     std::ofstream file("positions_astres.txt");
     double t = 0.0;
 

@@ -20,8 +20,8 @@ public:
         pos(x, y, z), v(vx, vy, vz), f(forceX, forceY, forceZ),
         masse(masse), id(id), type(type) {}
 
-    Particule(Vecteur<D> position, Vecteur<D> vitesse, Vecteur<D> force, double masse, 
-            int id, const char* type) : 
+    Particule(Vecteur<D> position, Vecteur<D> vitesse, double masse, 
+            int id, const char* type, Vecteur<D> force = Vecteur<D>()) : 
         pos(position), v(vitesse), f(force),
         masse(masse), id(id), type(type) {}
 };

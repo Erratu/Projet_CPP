@@ -1,5 +1,6 @@
 #include "vecteur.hpp"
 
+template <int D>
 Vecteur<D>& Vecteur<D>::operator=(const Vecteur<D>& autre) {
     if (this != &autre) {
         for (int i = 0; i < D; ++i) {
@@ -9,57 +10,67 @@ Vecteur<D>& Vecteur<D>::operator=(const Vecteur<D>& autre) {
     return *this;
 }
 
-Vecteur& Vecteur::operator+=(const Vecteur& autre) {
-    x += autre.x;
-    y += autre.y;
-    z += autre.z;
+template <int D>
+Vecteur<D>& Vecteur<D>::operator+=(const Vecteur<D>& autre) {
+    for (int i = 0; i < D; ++i) {
+        coords[i] += autre.coords[i];
+    }
     return *this;
 };
 
-Vecteur& Vecteur::operator-=(const Vecteur& autre) {
-    x -= autre.x;
-    y -= autre.y;
-    z -= autre.z;
+template <int D>
+Vecteur<D>& Vecteur<D>::operator-=(const Vecteur<D>& autre) {
+    for (int i = 0; i < D; ++i) {
+        coords[i] -= autre.coords[i];
+    }
     return *this;
 };
 
-Vecteur& Vecteur::operator*=(double scalaire) {
-    x *= scalaire;
-    y *= scalaire;
-    z *= scalaire;
+template <int D>
+Vecteur<D>& Vecteur<D>::operator*=(double scalaire) {
+    for (int i = 0; i < D; ++i) {
+        coords[i] *= scalaire;
+    }
     return *this;
 };
 
-Vecteur operator+(Vecteur v1, const Vecteur& v2) {
+template <int D>
+Vecteur<D> operator+(Vecteur<D> v1, const Vecteur<D>& v2) {
     v1 += v2;
     return v1;
 };
 
-Vecteur operator-(Vecteur v1, const Vecteur& v2) {
+template <int D>
+Vecteur<D> operator-(Vecteur<D> v1, const Vecteur<D>& v2) {
     v1 -= v2;
     return v1;
 };
 
-Vecteur operator*(Vecteur v, double scalaire) {
+template <int D>
+Vecteur<D> operator*(Vecteur<D> v, double scalaire) {
     v *= scalaire;
     return v;
 };
 
-Vecteur operator*(double scalaire, const Vecteur& v) {
+template <int D>
+Vecteur<D> operator*(double scalaire, const Vecteur<D>& v) {
     return v * scalaire;
 };
 
-std::ostream& operator<<(std::ostream& os, const Vecteur& v) {
-    os << "(" << v.x << ", " << v.y << ", " << v.z << ")";
+template <int D>
+std::ostream& operator<<(std::ostream& os, const Vecteur<D>& v) {
+    os << "(" << v.pos.x << ", " << v.pos.y << ", " << v.pos.z << ")";
     return os;
 }
 
-std::istream& operator>>(std::istream& is, Vecteur& v) {
-    is >> v.x >> v.y >> v.z;
+template <int D>
+std::istream& operator>>(std::istream& is, Vecteur<D>& v) {
+    is >> v.pos.x >> v.pos.y >> v.pos.z;
     return is;
 }
 
-void Vecteur::afficher() const
+template <int D>
+void Vecteur<D>::afficher() const
 {
-    std::cout << "(" << x << ", " << y << ", " << z << ")" << std::endl;
+    std::cout << "(" << pos.x << ", " << pos.y << ", " << pos.z << ")" << std::endl;
 }

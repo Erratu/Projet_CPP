@@ -47,14 +47,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-Wall -std=gnu++17"
+					"fragment" : "-Wall -g -std=gnu++17"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/anna/Documents/TPs/cpp/Projet/include"
+					"path" : "/user/2/maleta/Documents/TPs/cpp/Projet/include"
 				}
 			],
 			"language" : "CXX",
