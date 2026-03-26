@@ -2,9 +2,7 @@
 # Ces fichiers ne contiennent pas de fonction main
 # Remplacer ... par les fichiers nécessaires 
 add_library(particules 
-    particule.cpp
     univers.cpp
-    vecteur.cpp
 )
 
 target_include_directories(particules PUBLIC

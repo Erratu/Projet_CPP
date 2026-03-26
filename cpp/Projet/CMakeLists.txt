@@ -14,6 +14,9 @@ set(CMAKE_CXX_FLAGS "-Wall")
 
 set(src_main main.cpp)
 
+
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+
 ## Définir la localisation des entêtes.
 ## include_directories sera propager à l'ensemble du projet
 include_directories(${CMAKE_SOURCE_DIR}/include)
@@ -27,6 +30,5 @@ add_subdirectory(src)
 add_subdirectory(test)
 
 ## On implémente une démo, un programme de vérification.
-
 add_executable(${PROJECT_NAME} ${src_main})
-target_link_libraries(${PROJECT_NAME}  particules)
+target_link_libraries(${PROJECT_NAME} PRIVATE particules sfml-graphics sfml-window sfml-system)

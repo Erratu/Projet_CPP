@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /user/2/maleta/Documents/TPs/cpp/Projet
+CMAKE_SOURCE_DIR = /home/anna/Documents/TPs/cpp/Projet
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /user/2/maleta/Documents/TPs/cpp/Projet/build
+CMAKE_BINARY_DIR = /home/anna/Documents/TPs/cpp/Projet/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/particules.dir/depend.make
@@ -69,75 +69,43 @@ include src/CMakeFiles/particules.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/particules.dir/flags.make
 
-src/CMakeFiles/particules.dir/particule.cpp.o: src/CMakeFiles/particules.dir/flags.make
-src/CMakeFiles/particules.dir/particule.cpp.o: /user/2/maleta/Documents/TPs/cpp/Projet/src/particule.cpp
-src/CMakeFiles/particules.dir/particule.cpp.o: src/CMakeFiles/particules.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/particules.dir/particule.cpp.o"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/particules.dir/particule.cpp.o -MF CMakeFiles/particules.dir/particule.cpp.o.d -o CMakeFiles/particules.dir/particule.cpp.o -c /user/2/maleta/Documents/TPs/cpp/Projet/src/particule.cpp
-
-src/CMakeFiles/particules.dir/particule.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/particules.dir/particule.cpp.i"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /user/2/maleta/Documents/TPs/cpp/Projet/src/particule.cpp > CMakeFiles/particules.dir/particule.cpp.i
-
-src/CMakeFiles/particules.dir/particule.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/particules.dir/particule.cpp.s"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /user/2/maleta/Documents/TPs/cpp/Projet/src/particule.cpp -o CMakeFiles/particules.dir/particule.cpp.s
-
 src/CMakeFiles/particules.dir/univers.cpp.o: src/CMakeFiles/particules.dir/flags.make
-src/CMakeFiles/particules.dir/univers.cpp.o: /user/2/maleta/Documents/TPs/cpp/Projet/src/univers.cpp
+src/CMakeFiles/particules.dir/univers.cpp.o: /home/anna/Documents/TPs/cpp/Projet/src/univers.cpp
 src/CMakeFiles/particules.dir/univers.cpp.o: src/CMakeFiles/particules.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/particules.dir/univers.cpp.o"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/particules.dir/univers.cpp.o -MF CMakeFiles/particules.dir/univers.cpp.o.d -o CMakeFiles/particules.dir/univers.cpp.o -c /user/2/maleta/Documents/TPs/cpp/Projet/src/univers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/anna/Documents/TPs/cpp/Projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/particules.dir/univers.cpp.o"
+	cd /home/anna/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/particules.dir/univers.cpp.o -MF CMakeFiles/particules.dir/univers.cpp.o.d -o CMakeFiles/particules.dir/univers.cpp.o -c /home/anna/Documents/TPs/cpp/Projet/src/univers.cpp
 
 src/CMakeFiles/particules.dir/univers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/particules.dir/univers.cpp.i"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /user/2/maleta/Documents/TPs/cpp/Projet/src/univers.cpp > CMakeFiles/particules.dir/univers.cpp.i
+	cd /home/anna/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anna/Documents/TPs/cpp/Projet/src/univers.cpp > CMakeFiles/particules.dir/univers.cpp.i
 
 src/CMakeFiles/particules.dir/univers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/particules.dir/univers.cpp.s"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /user/2/maleta/Documents/TPs/cpp/Projet/src/univers.cpp -o CMakeFiles/particules.dir/univers.cpp.s
-
-src/CMakeFiles/particules.dir/vecteur.cpp.o: src/CMakeFiles/particules.dir/flags.make
-src/CMakeFiles/particules.dir/vecteur.cpp.o: /user/2/maleta/Documents/TPs/cpp/Projet/src/vecteur.cpp
-src/CMakeFiles/particules.dir/vecteur.cpp.o: src/CMakeFiles/particules.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/particules.dir/vecteur.cpp.o"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/particules.dir/vecteur.cpp.o -MF CMakeFiles/particules.dir/vecteur.cpp.o.d -o CMakeFiles/particules.dir/vecteur.cpp.o -c /user/2/maleta/Documents/TPs/cpp/Projet/src/vecteur.cpp
-
-src/CMakeFiles/particules.dir/vecteur.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/particules.dir/vecteur.cpp.i"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /user/2/maleta/Documents/TPs/cpp/Projet/src/vecteur.cpp > CMakeFiles/particules.dir/vecteur.cpp.i
-
-src/CMakeFiles/particules.dir/vecteur.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/particules.dir/vecteur.cpp.s"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /user/2/maleta/Documents/TPs/cpp/Projet/src/vecteur.cpp -o CMakeFiles/particules.dir/vecteur.cpp.s
+	cd /home/anna/Documents/TPs/cpp/Projet/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anna/Documents/TPs/cpp/Projet/src/univers.cpp -o CMakeFiles/particules.dir/univers.cpp.s
 
 # Object files for target particules
 particules_OBJECTS = \
-"CMakeFiles/particules.dir/particule.cpp.o" \
-"CMakeFiles/particules.dir/univers.cpp.o" \
-"CMakeFiles/particules.dir/vecteur.cpp.o"
+"CMakeFiles/particules.dir/univers.cpp.o"
 
 # External object files for target particules
 particules_EXTERNAL_OBJECTS =
 
-src/libparticules.a: src/CMakeFiles/particules.dir/particule.cpp.o
 src/libparticules.a: src/CMakeFiles/particules.dir/univers.cpp.o
-src/libparticules.a: src/CMakeFiles/particules.dir/vecteur.cpp.o
 src/libparticules.a: src/CMakeFiles/particules.dir/build.make
 src/libparticules.a: src/CMakeFiles/particules.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libparticules.a"
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && $(CMAKE_COMMAND) -P CMakeFiles/particules.dir/cmake_clean_target.cmake
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/particules.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/anna/Documents/TPs/cpp/Projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libparticules.a"
+	cd /home/anna/Documents/TPs/cpp/Projet/build/src && $(CMAKE_COMMAND) -P CMakeFiles/particules.dir/cmake_clean_target.cmake
+	cd /home/anna/Documents/TPs/cpp/Projet/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/particules.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/particules.dir/build: src/libparticules.a
 .PHONY : src/CMakeFiles/particules.dir/build
 
 src/CMakeFiles/particules.dir/clean:
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build/src && $(CMAKE_COMMAND) -P CMakeFiles/particules.dir/cmake_clean.cmake
+	cd /home/anna/Documents/TPs/cpp/Projet/build/src && $(CMAKE_COMMAND) -P CMakeFiles/particules.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/particules.dir/clean
 
 src/CMakeFiles/particules.dir/depend:
-	cd /user/2/maleta/Documents/TPs/cpp/Projet/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /user/2/maleta/Documents/TPs/cpp/Projet /user/2/maleta/Documents/TPs/cpp/Projet/src /user/2/maleta/Documents/TPs/cpp/Projet/build /user/2/maleta/Documents/TPs/cpp/Projet/build/src /user/2/maleta/Documents/TPs/cpp/Projet/build/src/CMakeFiles/particules.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/anna/Documents/TPs/cpp/Projet/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anna/Documents/TPs/cpp/Projet /home/anna/Documents/TPs/cpp/Projet/src /home/anna/Documents/TPs/cpp/Projet/build /home/anna/Documents/TPs/cpp/Projet/build/src /home/anna/Documents/TPs/cpp/Projet/build/src/CMakeFiles/particules.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/CMakeFiles/particules.dir/depend
 

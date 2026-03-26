@@ -2,25 +2,36 @@
 #include <chrono>
 #include <iostream>
 #include <list>
+#include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "univers.hpp"
 
 int main() {
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(0.0, 1.0);
+    Univers<2> u1(10);
 
-    //auto start = std::chrono::steady_clock::now();
-    
-    Univers<3> u1{2};
+    sf::RenderWindow window(sf::VideoMode(400, 300), "Particles");
 
-    for (auto& p : u1.particules) { 
-        p.afficher();
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear(sf::Color::Black);
+
+        for (auto& p : u1.particules) {
+            Vecteur<2>& pos = p.pos;
+            sf::CircleShape shape(5);
+            shape.setOrigin(5, 5);
+            shape.setPosition(pos[0]*400, pos[1]*300);
+            shape.setFillColor(sf::Color::White);
+            window.draw(shape);
+        }
+
+        window.display();
     }
-
-    //auto end = std::chrono::steady_clock::now();
-    //std::chrono::duration<double> elapsed_seconds = end-start;
-    //std::cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
 
     return 0;
 }

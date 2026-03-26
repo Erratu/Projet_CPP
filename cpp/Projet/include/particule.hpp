@@ -11,7 +11,9 @@ public:
     int id; // Identifiant unique
     const char* type; // Catégorie de la particule
 
-    void afficher();
+    void afficher() {
+        std::cout << "Particule " << id << ": " << pos << "\n";
+    }
     
     Particule(double x, double y, double z, double vx, 
             double vy, double vz, double masse, 

@@ -1,62 +1,33 @@
-#include <list>
-
+#include <iostream>
+#include <random>
+#include <chrono>
 #include "univers.hpp"
 
+int powInt(int base, int exp) {
+    int res = 1;
+    for (int i = 0; i < exp; ++i)
+        res *= base;
+    return res;
+}
+
 int main() {
-
-    std::list<Particule<2>> particleList;
-
-    // Soleil
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{0.0, 0.0},
-        Vecteur<2>{0.0, 0.0},
-        1.0,
-        0, "Soleil"
-        }
-    );
-
-    // Terre
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{0.0, 1.0},
-        Vecteur<2>{-1.0, 0.0},
-        3.0e-6,
-        1, "Terre"
-        }
-    );
-
-    // Jupiter
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{0.0, 5.36},
-        Vecteur<2>{-0.425, 0.0},
-        9.55e-4,
-        2, "Jupiter"
-        }
-    );
-
-    // Halley
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{34.75, 0.0},
-        Vecteur<2>{0.0, 0.0296},
-        1e-14,
-        3, "Halley"
-        }
-    );
-
-    Univers u1{particleList};
+    const int nb_particules = powInt(2, 3); 
+    auto start = std::chrono::steady_clock::now();
+    Univers<3> u1(nb_particules);
 
     for (auto& p : u1.particules) { 
         p.afficher();
-    }
+    } // elapsed time: 0.320668s pour 2^15
 
     u1.algoStormerVerlet();
 
     for (auto& p : u1.particules) { 
         p.afficher();
-    }
+    } // 2^9 : elapsed time: 577.576s trop long, à revoir
 
-        return 0;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
+
+    return 0;
 }

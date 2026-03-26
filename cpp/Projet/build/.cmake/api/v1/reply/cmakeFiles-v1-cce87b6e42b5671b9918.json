@@ -88,6 +88,26 @@
 			"path" : "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
 		},
 		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets-none.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigDependencies.cmake"
+		},
+		{
 			"path" : "src/CMakeLists.txt"
 		},
 		{
@@ -97,8 +117,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/user/2/maleta/Documents/TPs/cpp/Projet/build",
-		"source" : "/user/2/maleta/Documents/TPs/cpp/Projet"
+		"build" : "/home/anna/Documents/TPs/cpp/Projet/build",
+		"source" : "/home/anna/Documents/TPs/cpp/Projet"
 	},
 	"version" : 
 	{

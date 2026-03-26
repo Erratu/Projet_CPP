@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /user/2/maleta/Documents/TPs/cpp/Projet
+CMAKE_SOURCE_DIR = /home/anna/Documents/TPs/cpp/Projet
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /user/2/maleta/Documents/TPs/cpp/Projet/build
+CMAKE_BINARY_DIR = /home/anna/Documents/TPs/cpp/Projet/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles /user/2/maleta/Documents/TPs/cpp/Projet/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anna/Documents/TPs/cpp/Projet/build/CMakeFiles /home/anna/Documents/TPs/cpp/Projet/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/2/maleta/Documents/TPs/cpp/Projet/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anna/Documents/TPs/cpp/Projet/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -155,6 +155,32 @@ test_vec/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_vec.dir/build.make test/CMakeFiles/test_vec.dir/build
 .PHONY : test_vec/fast
 
+#=============================================================================
+# Target rules for targets named test_univ
+
+# Build rule for target.
+test_univ: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_univ
+.PHONY : test_univ
+
+# fast build rule for target.
+test_univ/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_univ.dir/build.make test/CMakeFiles/test_univ.dir/build
+.PHONY : test_univ/fast
+
+#=============================================================================
+# Target rules for targets named test_algo
+
+# Build rule for target.
+test_algo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_algo
+.PHONY : test_algo
+
+# fast build rule for target.
+test_algo/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_algo.dir/build.make test/CMakeFiles/test_algo.dir/build
+.PHONY : test_algo/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -189,6 +215,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Lab3"
 	@echo "... particules"
+	@echo "... test_algo"
+	@echo "... test_univ"
 	@echo "... test_vec"
 	@echo "... main.o"
 	@echo "... main.i"

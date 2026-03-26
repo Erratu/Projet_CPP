@@ -9,28 +9,28 @@ int main()
     Vecteur<3> v3{4, 5, 6};
 
     std::cout << "Vecteur v1 : ";
-    v1.afficher();
+    std::cout << v1 << std::endl;
 
     std::cout << "Vecteur v2 : ";
-    v2.afficher();
+    std::cout << v2 << std::endl;
 
     std::cout << "Vecteur v3 : ";
-    v3.afficher();
+    std::cout << v3 << std::endl;
 
     // Test addition
     Vecteur<3> v4 = v2 + v3;
     std::cout << "v2 + v3 = ";
-    v4.afficher();
+    std::cout << v4 << std::endl;
 
     // Test soustraction
     Vecteur<3> v5 = v3 - v2;
     std::cout << "v3 - v2 = ";
-    v5.afficher();
+    std::cout << v5 << std::endl;
 
     // Test multiplication scalaire
     Vecteur<3> v6 = v2 * 2;
     std::cout << "v2 * 2 = ";
-    v6.afficher();
+    std::cout << v6 << std::endl;
 
     // Test produit scalaire
     // double ps = v2.produitScalaire(v3);
