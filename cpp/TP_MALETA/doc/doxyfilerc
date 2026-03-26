@@ -1,0 +1,22 @@
+# Nom du projet
+PROJECT_NAME           = "TP_MALETA"
+
+# Dossiers à documenter
+INPUT                  = @CMAKE_SOURCE_DIR@/include @CMAKE_SOURCE_DIR@/src
+
+# Parcours récursif
+RECURSIVE              = YES
+
+# Sortie de la documentation
+OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docu
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+# Supprimer le bruit dans la console
+QUIET                  = YES
+WARNINGS               = YES
+
+# Options supplémentaires (facultatif)
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
