@@ -1,3 +1,5 @@
+.PHONY: all doc clean
+
 all:
 	mkdir -p build && cd build && cmake .. && make
 

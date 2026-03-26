@@ -4,21 +4,41 @@
 #include <algorithm>
 #include <iostream>
 
+/**
+ * @brief Classe représentant un vecteur dans un espace de dimension D
+ *
+ * Cette classe permet de représenter un vecteur dans un espace de dimension D
+ * et de réaliser des opérations sur ces vecteurs.
+ * @tparam D Dimension de l’espace (2D, 3D…)
+ */
 template<int D>
 class Vecteur {
 public:
     double coords[D];
 
+    /**
+     * @brief Constructeur par défaut
+     * 
+     * Initialise tous les coordonnées à 0.0
+     */
     Vecteur() {
         for (int i = 0; i < D; ++i)
             coords[i] = 0.0;
     }
 
+    /**
+     * @brief Constructeur à partir d'un tableau
+     * @param val Tableau de D coordonnées
+     */
     Vecteur(const double val[D]) {
         for (int i = 0; i < D; ++i)
             coords[i] = val[i];
     }
 
+    /**
+     * @brief Constructeur à partir d'une liste d'initialisation
+     * @param vals Liste des valeurs à initialiser
+     */
     Vecteur(std::initializer_list<double> vals) {
         int i = 0;
         for (double v : vals) {
@@ -28,6 +48,10 @@ public:
             coords[i] = 0.0;
     }
 
+    /**
+     * @brief Constructeur de copie
+     * @param v Vecteur à copier
+     */
     Vecteur(const Vecteur& v) {
         for (int i = 0; i < D; ++i)
             coords[i] = v.coords[i];
@@ -35,6 +59,11 @@ public:
 
     ~Vecteur() = default;
 
+    /**
+     * @brief Opérateur d'assignation
+     * @param autre Vecteur à assigner
+     * @return Référence à ce vecteur
+     */
     Vecteur& operator=(const Vecteur& autre) {
         if (this != &autre) {
             for (int i = 0; i < D; ++i)
@@ -61,6 +90,11 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Accès aux coordonnées avec indice
+     * @param i Indice de la coordonnée
+     * @return Référence à la coordonnée
+     */
     double& operator[](int i) { return coords[i]; }
     const double& operator[](int i) const { return coords[i]; }
 };

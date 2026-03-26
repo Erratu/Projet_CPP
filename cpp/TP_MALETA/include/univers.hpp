@@ -6,6 +6,13 @@
 // essayer vector, plus rapide
 // mettre en private et surcharge pour getter/setter ?
 
+/**
+ * @brief Classe représentant un univers de particules
+ *
+ * Cette classe contient une liste de particules et permet
+ * de gérer leurs positions et vitesses.
+ * @tparam D Dimension de l’univers (2D, 3D…)
+ */
 template<int D>
 class Univers {
 public:
@@ -22,9 +29,30 @@ public:
 
     std::list<Cellule> cellules;
 
-    void calculerForces();              
+    /**
+     * @brief Calcule les forces d'interaction entre toutes les paires de particules
+     * 
+     * Utilise une approche naïve O(n²) pour calculer les forces d'interaction
+     * gravitationnelles entre chaque paire de particules.
+     */
+    void calculerForces();
+
+    /**
+     * @brief Simule l'évolution du système en utilisant l'algorithme de Stormer-Verlet
+     * @param t_end Temps final de simulation (par défaut 468.5)
+     * @param dt Pas de temps (par défaut 0.015)
+     * 
+     * Enregistre les positions de toutes les particules dans un fichier "positions_astres.txt".
+     */
     void algoStormerVerlet(double t_end = 468.5, double dt = 0.015);   
     
+    /**
+     * @brief Constructeur générateur avec particules aléatoires
+     * @param nb_particules Nombre de particules à générer
+     * @param l Vecteur des dimensions de l'univers (par défaut vecteur nul)
+     * 
+     * Génère des particules avec positions et vitesses aléatoires.
+     */
     Univers(int nb_particules, Vecteur<D> l = Vecteur<D>()) {
         std::random_device rd;
         std::mt19937 mt(rd());
@@ -56,6 +84,11 @@ public:
         // et construire la liste des cellules voisines
     }
 
+    /**
+     * @brief Constructeur à partir d'une liste de particules
+     * @param ps Liste des particules
+     * @param l Vecteur des dimensions de l'univers (par défaut vecteur nul)
+     */
     Univers(std::list<Particule<D>> ps, Vecteur<D> l = Vecteur<D>()) {
         particules = ps;
 
@@ -66,6 +99,10 @@ public:
         }
     }
 
+    /**
+     * @brief Constructeur de copie
+     * @param autre Univers à copier
+     */
     Univers(const Univers& autre) {
         for(const auto& p : autre.particules) {
             particules.emplace_back(p);

@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wall CMakeFiles/test_algo.dir/test_algo.cpp.o -o test_algo  ../src/libparticules.a 

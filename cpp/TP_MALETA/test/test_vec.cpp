@@ -1,6 +1,16 @@
 #include "vecteur.hpp"
 #include <iostream>
 
+/**
+ * @brief Tests unitaires pour la classe Vecteur
+ * 
+ * Teste les constructeurs et les opérateurs de la classe Vecteur<3>:
+ * - Constructeurs (par défaut et par initialisation)
+ * - Opérateurs arithmétiques (addition, soustraction, multiplication)
+ * - Affichage des résultats
+ * 
+ * @return 0 si l'exécution s'est déroulée correctement
+ */
 int main()
 {
     // Test constructeur

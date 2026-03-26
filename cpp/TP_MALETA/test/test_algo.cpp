@@ -2,6 +2,15 @@
 
 #include "univers.hpp"
 
+/**
+ * @brief Test de simulation du système solaire
+ * 
+ * Crée un univers 2D contenant le soleil, la terre, jupiter et la comète de halley 
+ * avec des positions et vitesses initiales réalistes.
+ * Lance une simulation utilisant l'algorithme de Stormer-Verlet.
+ * 
+ * @return 0 si l'exécution s'est déroulée correctement
+ */
 int main() {
 
     std::list<Particule<2>> particleList;

@@ -7,6 +7,13 @@
 
 #include "univers.hpp"
 
+/**
+ * @brief Visualisation d'un univers de particules
+ * 
+ * Crée une fenêtre graphique SFML et affiche un système de 10 particules en 2D.
+ * 
+ * @return 0 si l'exécution s'est déroulée correctement
+ */
 int main() {
     Univers<2> u1(10);
 
