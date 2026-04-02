@@ -38,7 +38,7 @@ int main() {
 
     for (auto& p : u1.particules) { 
         p.afficher();
-    } // 2^9 : elapsed time: 577.576s trop long, à revoir
+    } // 2^9 : elapsed time: 577.576s trop long, à revoir. gprof
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;

@@ -21,13 +21,14 @@ public:
     double rayon_coupe;
     Vecteur<D> longueurs;
     std::array<int, D> n_cells;
+    std::array<int, D> mult_dim;
 
     struct Cellule {
-        std::list<Particule<D>*> particules;      
-        std::list<Cellule*> voisines;          
+        std::list<Particule<D>*> particules;     
+        std::vector<int> voisines;         
     };
 
-    std::list<Cellule> cellules;
+    std::vector<Cellule> cellules;
 
     /**
      * @brief Calcule les forces d'interaction entre toutes les paires de particules
@@ -76,12 +77,33 @@ public:
         for (int i = 0; i < D; ++i) {
             longueurs[i] = l[i];
         }
+        int tot_n_cells = 1;
         for (int i = 0; i < D; ++i) {
             n_cells[i] = static_cast<int>(longueurs[i] / rayon_coupe);
+            tot_n_cells *= n_cells[i];
         }
+        cellules.resize(tot_n_cells);
 
         // Assigner les particules aux cellules
+        for (auto& p : particules) {
+            int cell_index = 0;
+            int mult_dim[0] = 1;
+            for (int i = 0; i < D; ++i) {
+                int cell_coord = static_cast<int>(p.pos[i] / rayon_coupe);
+                cell_index += cell_coord * mult_dim[i];
+                mult_dim[i+1] = mult_dim[i] * n_cells[i];
+            }
+            cellules[cell_index].particules.push_back(&p);
+        }
+        
         // et construire la liste des cellules voisines
+        for (int i = 0; i < cellules.size(); ++i) {
+            for (int j = 0; j < D; ++j) {
+                if (i + n_cells[j] < cellules.size()) {
+                    cellules[i].voisines.push_back(i + n_cells[j]);
+                }
+            }
+        }
     }
 
     /**
