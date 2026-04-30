@@ -1,0 +1,6 @@
+add_executable(demo_univers demo_univers.cpp)
+add_executable(demo_sys_sol demo_sys_sol.cpp)
+add_executable(demo_collision demo_collision.cpp)
+target_link_libraries(demo_univers PRIVATE particules sfml-graphics sfml-window sfml-system)
+target_link_libraries(demo_sys_sol PRIVATE particules sfml-graphics sfml-window sfml-system)
+target_link_libraries(demo_collision PRIVATE particules sfml-graphics sfml-window sfml-system)

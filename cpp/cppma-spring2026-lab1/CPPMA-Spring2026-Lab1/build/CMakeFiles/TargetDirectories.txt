@@ -1,3 +1,0 @@
-/user/2/maleta/Documents/cpp/cppma-spring2026-lab1/CPPMA-Spring2026-Lab1/build/CMakeFiles/exe.dir
-/user/2/maleta/Documents/cpp/cppma-spring2026-lab1/CPPMA-Spring2026-Lab1/build/CMakeFiles/edit_cache.dir
-/user/2/maleta/Documents/cpp/cppma-spring2026-lab1/CPPMA-Spring2026-Lab1/build/CMakeFiles/rebuild_cache.dir
