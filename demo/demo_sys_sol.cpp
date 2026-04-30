@@ -80,8 +80,9 @@ int main() {
         float halfSize = particleSize / 2.0f;
 
         for (auto& p : u1) {
-            float x = static_cast<float>(p.pos[0]);
-            float y = static_cast<float>(p.pos[1]);
+            Vecteur<2> pos = p.getPos();
+            float x = static_cast<float>(pos[0]);
+            float y = static_cast<float>(pos[1]);
 
             // Définit les 4 coins du carré représentant la particule
             particles[i + 0].position = sf::Vector2f(x - halfSize, y - halfSize);

@@ -92,7 +92,6 @@ test_algo_EXTERNAL_OBJECTS =
 
 test/test_algo: test/CMakeFiles/test_algo.dir/test_algo.cpp.o
 test/test_algo: test/CMakeFiles/test_algo.dir/build.make
-test/test_algo: src/libparticules.a
 test/test_algo: test/CMakeFiles/test_algo.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/anna/Documents/Projet_CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_algo"
 	cd /home/anna/Documents/Projet_CPP/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_algo.dir/link.txt --verbose=$(VERBOSE)

@@ -197,8 +197,6 @@ test/CMakeFiles/test_univ.dir/test_univ.cpp.o: \
  /usr/include/c++/13/compare \
  /home/anna/Documents/Projet_CPP/include/particule.hpp \
  /home/anna/Documents/Projet_CPP/include/vecteur.hpp \
- /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/stl_tempbuf.h \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h
+ /home/anna/Documents/Projet_CPP/include/../src/vecteur.tpp \
+ /home/anna/Documents/Projet_CPP/include/../src/particule.tpp \
+ /home/anna/Documents/Projet_CPP/include/../src/univers.tpp

@@ -92,7 +92,6 @@ demo_collision_EXTERNAL_OBJECTS =
 
 demo/demo_collision: demo/CMakeFiles/demo_collision.dir/demo_collision.cpp.o
 demo/demo_collision: demo/CMakeFiles/demo_collision.dir/build.make
-demo/demo_collision: src/libparticules.a
 demo/demo_collision: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 demo/demo_collision: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 demo/demo_collision: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1

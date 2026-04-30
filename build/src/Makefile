@@ -116,44 +116,6 @@ depend:
 	cd /home/anna/Documents/Projet_CPP/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-src/CMakeFiles/particules.dir/rule:
-	cd /home/anna/Documents/Projet_CPP/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/particules.dir/rule
-.PHONY : src/CMakeFiles/particules.dir/rule
-
-# Convenience name for target.
-particules: src/CMakeFiles/particules.dir/rule
-.PHONY : particules
-
-# fast build rule for target.
-particules/fast:
-	cd /home/anna/Documents/Projet_CPP/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/particules.dir/build.make src/CMakeFiles/particules.dir/build
-.PHONY : particules/fast
-
-univers.o: univers.cpp.o
-.PHONY : univers.o
-
-# target to build an object file
-univers.cpp.o:
-	cd /home/anna/Documents/Projet_CPP/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/particules.dir/build.make src/CMakeFiles/particules.dir/univers.cpp.o
-.PHONY : univers.cpp.o
-
-univers.i: univers.cpp.i
-.PHONY : univers.i
-
-# target to preprocess a source file
-univers.cpp.i:
-	cd /home/anna/Documents/Projet_CPP/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/particules.dir/build.make src/CMakeFiles/particules.dir/univers.cpp.i
-.PHONY : univers.cpp.i
-
-univers.s: univers.cpp.s
-.PHONY : univers.s
-
-# target to generate assembly for a file
-univers.cpp.s:
-	cd /home/anna/Documents/Projet_CPP/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/particules.dir/build.make src/CMakeFiles/particules.dir/univers.cpp.s
-.PHONY : univers.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,10 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... particules"
-	@echo "... univers.o"
-	@echo "... univers.i"
-	@echo "... univers.s"
 .PHONY : help
 
 

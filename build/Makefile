@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named particules
-
-# Build rule for target.
-particules: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 particules
-.PHONY : particules
-
-# fast build rule for target.
-particules/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/particules.dir/build.make src/CMakeFiles/particules.dir/build
-.PHONY : particules/fast
-
-#=============================================================================
 # Target rules for targets named test_vec
 
 # Build rule for target.
@@ -232,7 +219,6 @@ help:
 	@echo "... demo_collision"
 	@echo "... demo_sys_sol"
 	@echo "... demo_univers"
-	@echo "... particules"
 	@echo "... test_algo"
 	@echo "... test_univ"
 	@echo "... test_vec"

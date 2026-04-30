@@ -275,4 +275,7 @@ demo/CMakeFiles/demo_univers.dir/demo_univers.cpp.o: \
  /home/anna/Documents/Projet_CPP/include/univers.hpp \
  /usr/include/c++/13/array /usr/include/c++/13/compare \
  /home/anna/Documents/Projet_CPP/include/particule.hpp \
- /home/anna/Documents/Projet_CPP/include/vecteur.hpp
+ /home/anna/Documents/Projet_CPP/include/vecteur.hpp \
+ /home/anna/Documents/Projet_CPP/include/../src/vecteur.tpp \
+ /home/anna/Documents/Projet_CPP/include/../src/particule.tpp \
+ /home/anna/Documents/Projet_CPP/include/../src/univers.tpp

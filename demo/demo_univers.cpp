@@ -34,11 +34,6 @@ int main() {
 
     Univers<2> u1(100, dimensions, 400 / 10.0);
 
-    for (auto& p : u1) {
-        p.v[0] = (rand() % 100 - 50) / 10.0; // Vitesse en X aléatoire
-        p.v[1] = (rand() % 100 - 50) / 10.0; // Vitesse en Y aléatoire
-    }
-
     // Calcul du nombre de lignes nécessaires
     int numLinesX = u1.getNCells(0) + 1; //
     int numLinesY = u1.getNCells(1) + 1; //
@@ -83,8 +78,9 @@ int main() {
         float halfSize = particleSize / 2.0f;
 
         for (auto& p : u1) {
-            float x = static_cast<float>(p.pos[0]);
-            float y = static_cast<float>(p.pos[1]);
+            Vecteur<2> pos = p.getPos();
+            float x = static_cast<float>(pos[0]);
+            float y = static_cast<float>(pos[1]);
 
             // Définit les 4 coins du carré représentant la particule
             particles[i + 0].position = sf::Vector2f(x - halfSize, y - halfSize);

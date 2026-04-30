@@ -16,12 +16,17 @@ int main() {
     sf::Texture circleTexture = rt.getTexture();
     circleTexture.setSmooth(true);
 
-    const unsigned int windowWidth = 250;
+    // Ajustement de la taille de la fenêtre pour mieux encadrer la scène
+    const unsigned int windowWidth = 200; 
     const unsigned int windowHeight = 150;
     Vecteur<2> dimensions;
     dimensions[0] = static_cast<double>(windowWidth);
     dimensions[1] = static_cast<double>(windowHeight);
-    const float particleSize = 2.0f;
+    
+    // Si la distance d'équilibre de LJ (sigma) est de 1.0, la particule visuelle
+    // doit mesurer environ 1.0 de diamètre pour que le contact visuel 
+    // corresponde au contact physique.
+    const float particleSize = 1.0f; 
 
     Univers<2> u1 = create_collision_scene(dimensions);
 
@@ -50,7 +55,7 @@ int main() {
         grid[lineIdx - 1].color = sf::Color(50, 50, 50);
     }
 
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Simulation de Particules Optimisee");
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Simulation de Particules - Collision");
     window.setFramerateLimit(60);
     sf::VertexArray particles(sf::Quads, u1.nbParticules() * 4);
     double temps_total = 0.0;
@@ -73,8 +78,9 @@ int main() {
         float halfSize = particleSize / 2.0f;
 
         for (auto& p : u1) {
-            float x = static_cast<float>(p.pos[0]);
-            float y = static_cast<float>(p.pos[1]);
+            Vecteur<2> pos = p.getPos();
+            float x = static_cast<float>(pos[0]);
+            float y = static_cast<float>(pos[1]);
 
             // Définit les 4 coins du carré représentant la particule
             particles[i + 0].position = sf::Vector2f(x - halfSize, y - halfSize);
@@ -87,8 +93,8 @@ int main() {
             particles[i + 2].texCoords = sf::Vector2f(64, 64);
             particles[i + 3].texCoords = sf::Vector2f(0, 64);
 
-            sf::Color color = (p.id < 6400) ? sf::Color::Blue : sf::Color::Red; // N2=6400 [cite: 75]
-    
+            sf::Color color = (p.getType() == 'R') ? sf::Color::Red : sf::Color::Blue;
+
             for(int j=0; j<4; ++j) {
                 particles[i + j].color = color;
             }
@@ -96,36 +102,52 @@ int main() {
         }
 
         window.clear(sf::Color::Black);
-        window.draw(grid);
+        // window.draw(grid);
         window.draw(particles, &circleTexture);
         window.display();
     }
 
     return 0;
 }
+
 Univers<2> create_collision_scene(Vecteur<2> dimensions) {
     std::list<Particule<2>> particles;
-    double dist_equilibre = std::pow(2.0, 1.0/6.0);
+    double dist_equilibre = std::pow(2.0, 1.0/6.0); // ~1.122
     int id = 0;
 
-    double offset_y = 20.0;
-    // Le rectangle bleu
-    for (int i = 0; i < 40; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            Vecteur<2> pos = {i * dist_equilibre, offset_y + j * dist_equilibre};
-            Vecteur<2> vel = {0.0, 0.0}; // Immobile au départ
-            particles.emplace_back(Particule<2>{pos, vel, 1.0, id++, "Bleu"});
+    int cols_bleu = 160;
+    int cols_rouge = 40;
+
+    // Largeur totale occupée par le bloc bleu
+    double largeur_bleu = cols_bleu * dist_equilibre;
+
+    // Pour centrer la scène dans la fenêtre, on calcule une petite marge à gauche
+    double margin_x = (dimensions[0] - largeur_bleu) / 2.0;
+    if (margin_x < 0) margin_x = 0; // Sécurité si la fenêtre est trop petite
+
+    // Le centre X exact du bloc bleu, en tenant compte de la marge
+    double centre_x = margin_x + (largeur_bleu / 2.0);
+
+    // L'offset rouge doit commencer à la moitié de la largeur du bloc rouge avant le centre
+    double offset_x_rouge = centre_x - ((cols_rouge * dist_equilibre) / 2.0);
+    double offset_y_rouge = 10.0; 
+
+    // Le carré rouge (1600 particules)
+    for (int i = 0; i < cols_rouge; ++i) {
+        for (int j = 0; j < 40; ++j) {
+            Vecteur<2> pos = {offset_x_rouge + i * dist_equilibre, offset_y_rouge + j * dist_equilibre};
+            Vecteur<2> vel = {0.0, 10.0};
+            particles.emplace_back(Particule<2>{pos, vel, 1.0, id++, "R"});
         }
     }
 
-    // Le carré rouge
-    double offset_x = (40 * dist_equilibre) / 2.0 - (10 * dist_equilibre) / 2.0;
-
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            Vecteur<2> pos = {offset_x + i * dist_equilibre, j * dist_equilibre};
-            Vecteur<2> vel = {0.0, 10.0}; // Vitesse initiale vers le bas
-            particles.emplace_back(Particule<2>{pos, vel, 1.0, id++, "Rouge"});
+    double offset_y = 60.0;
+    // Le rectangle bleu (6400 particules)
+    for (int i = 0; i < cols_bleu; ++i) {
+        for (int j = 0; j < 40; ++j) {
+            Vecteur<2> pos = {margin_x + i * dist_equilibre, offset_y + j * dist_equilibre};
+            Vecteur<2> vel = {0.0, 0.0};
+            particles.emplace_back(Particule<2>{pos, vel, 1.0, id++, "B"});
         }
     }
 

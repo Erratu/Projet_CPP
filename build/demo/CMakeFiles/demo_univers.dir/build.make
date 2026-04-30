@@ -92,7 +92,6 @@ demo_univers_EXTERNAL_OBJECTS =
 
 demo/demo_univers: demo/CMakeFiles/demo_univers.dir/demo_univers.cpp.o
 demo/demo_univers: demo/CMakeFiles/demo_univers.dir/build.make
-demo/demo_univers: src/libparticules.a
 demo/demo_univers: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 demo/demo_univers: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 demo/demo_univers: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1

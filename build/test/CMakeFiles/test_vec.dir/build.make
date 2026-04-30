@@ -92,7 +92,6 @@ test_vec_EXTERNAL_OBJECTS =
 
 test/test_vec: test/CMakeFiles/test_vec.dir/test_vec.cpp.o
 test/test_vec: test/CMakeFiles/test_vec.dir/build.make
-test/test_vec: src/libparticules.a
 test/test_vec: test/CMakeFiles/test_vec.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/anna/Documents/Projet_CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_vec"
 	cd /home/anna/Documents/Projet_CPP/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_vec.dir/link.txt --verbose=$(VERBOSE)

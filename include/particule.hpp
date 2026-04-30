@@ -14,33 +14,12 @@ private:
     Vecteur<D> pos;
     Vecteur<D> v;
     Vecteur<D> f;
+    Vecteur<D> f_old; 
     double masse; // Masse
     int id; // Identifiant unique
     const char* type; // Catégorie de la particule
 
 public:
-    
-    /**
-     * @brief Constructeur avec paramètres individuels
-     * @param x Composante x de la position
-     * @param y Composante y de la position
-     * @param z Composante z de la position
-     * @param vx Composante x de la vitesse
-     * @param vy Composante y de la vitesse
-     * @param vz Composante z de la vitesse
-     * @param masse Masse de la particule
-     * @param id Identifiant unique
-     * @param type Type de la particule
-     * @param forceX Composante x de la force (par défaut 0)
-     * @param forceY Composante y de la force (par défaut 0)
-     * @param forceZ Composante z de la force (par défaut 0)
-     */
-    Particule(double x, double y, double z, double vx, 
-            double vy, double vz, double masse, 
-            int id, const char* type, 
-            double forceX=0, double forceY=0, double forceZ=0) : 
-        pos(x, y, z), v(vx, vy, vz), f(forceX, forceY, forceZ),
-        masse(masse), id(id), type(type) {}
 
     /**
      * @brief Constructeur avec vecteurs
@@ -52,9 +31,7 @@ public:
      * @param force Vecteur de force (par défaut nul)
      */
     Particule(Vecteur<D> position, Vecteur<D> vitesse, double masse, 
-            int id, const char* type, Vecteur<D> force = Vecteur<D>()) : 
-        pos(position), v(vitesse), f(force),
-        masse(masse), id(id), type(type) {}
+            int id, const char* type, Vecteur<D> force = Vecteur<D>());
 
     /**
      * @brief Affiche les informations de la particule
@@ -63,10 +40,16 @@ public:
      */
     void afficher();
 
-    /** @brief Retourne l'index de la cellule dans laquelle se trouve la particule
-     * @return Index de la cellule
-     */
-    int getCell(double rayon_coupe, 
-                        const std::array<int, D>& n_cells, 
-                        const std::array<int, D>& mult_dim) const;
+    const Vecteur<D>& getPos() const { return pos; }
+    void updatePosition(double dt);
+    void updateV(double dt);
+    void resetForce();
+    Vecteur<D> dist(const Particule<D>& autre) const;
+    void addForce(const Vecteur<D>& force);
+    char getType() const { return type[0]; }
 };
+
+template<int D>
+std::ostream& operator<<(std::ostream& os, const Particule<D>& p);
+
+#include "../src/particule.tpp"

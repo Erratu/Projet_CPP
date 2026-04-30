@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wall CMakeFiles/demo_sys_sol.dir/demo_sys_sol.cpp.o -o demo_sys_sol  ../src/libparticules.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 
+/usr/bin/c++ -Wall CMakeFiles/demo_sys_sol.dir/demo_sys_sol.cpp.o -o demo_sys_sol  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 

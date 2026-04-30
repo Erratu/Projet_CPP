@@ -92,7 +92,6 @@ demo_sys_sol_EXTERNAL_OBJECTS =
 
 demo/demo_sys_sol: demo/CMakeFiles/demo_sys_sol.dir/demo_sys_sol.cpp.o
 demo/demo_sys_sol: demo/CMakeFiles/demo_sys_sol.dir/build.make
-demo/demo_sys_sol: src/libparticules.a
 demo/demo_sys_sol: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 demo/demo_sys_sol: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 demo/demo_sys_sol: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1

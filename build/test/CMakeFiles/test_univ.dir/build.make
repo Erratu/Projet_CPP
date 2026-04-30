@@ -92,7 +92,6 @@ test_univ_EXTERNAL_OBJECTS =
 
 test/test_univ: test/CMakeFiles/test_univ.dir/test_univ.cpp.o
 test/test_univ: test/CMakeFiles/test_univ.dir/build.make
-test/test_univ: src/libparticules.a
 test/test_univ: test/CMakeFiles/test_univ.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/anna/Documents/Projet_CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_univ"
 	cd /home/anna/Documents/Projet_CPP/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_univ.dir/link.txt --verbose=$(VERBOSE)
