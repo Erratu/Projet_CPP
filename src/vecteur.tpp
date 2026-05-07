@@ -82,6 +82,19 @@ Vecteur<D> operator*(double scalaire, Vecteur<D> v) {
     return v * scalaire;
 }
 
+template<int D>
+bool Vecteur<D>::operator==(const Vecteur<D>& autre) const {
+    for (int i = 0; i < D; ++i) {
+        if (coords[i] != autre.coords[i]) return false;
+    }
+    return true;
+}
+
+template<int D>
+bool Vecteur<D>::operator!=(const Vecteur<D>& autre) const {
+    return !(*this == autre);
+}
+
 // I/O stream operators
 template<int D>
 std::ostream& operator<<(std::ostream& os, const Vecteur<D>& v) {

@@ -29,6 +29,8 @@ public:
     Vecteur& operator-=(const Vecteur& autre);
     Vecteur& operator*=(double scalaire);
     Vecteur operator-() const;
+    bool operator==(const Vecteur& autre) const;
+    bool operator!=(const Vecteur& autre) const;
 
     // Accessors
     double& operator[](int i) { return coords[i]; }

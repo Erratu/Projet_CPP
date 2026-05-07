@@ -1,108 +1,29 @@
-#include <random>
-#include <chrono>
 #include <iostream>
 #include <list>
-#include <SFML/Graphics.hpp>
 #include <vector>
 
 #include "univers.hpp"
 
 Univers<2> create_sys(Vecteur<2> dimensions);
 
-/**
- * @brief Visualisation du système solaire
- * 
- * Crée une fenêtre graphique SFML et affiche le système solaire en 2D avec sf::VertexArray.
- * 
- * @return 0 si l'exécution s'est déroulée correctement
- */
 int main() {
-    sf::RenderTexture rt;
-    rt.create(64, 64);
-    rt.clear(sf::Color::Transparent);
-    sf::CircleShape circle(32);
-    circle.setFillColor(sf::Color::White);
-    rt.draw(circle);
-    rt.display();
-    sf::Texture circleTexture = rt.getTexture();
-    circleTexture.setSmooth(true);
-
     const unsigned int windowWidth = 200;
     const unsigned int windowHeight = 200;
-    Vecteur<2> dimensions;
-    dimensions[0] = static_cast<double>(windowWidth);
-    dimensions[1] = static_cast<double>(windowHeight);
-    const float particleSize = 1.0f;
-
+    Vecteur<2> dimensions{static_cast<double>(windowWidth), static_cast<double>(windowHeight)};
+    
     Univers<2> u1 = create_sys(dimensions);
 
-    // Calcul du nombre de lignes nécessaires
-    int numLinesX = u1.getNCells(0) + 1; //
-    int numLinesY = u1.getNCells(1) + 1; //
-    sf::VertexArray grid(sf::Lines, (numLinesX + numLinesY) * 2);
+    std::cout << "Début de la simulation du système solaire...\n";
 
-    int lineIdx = 0;
+    double t_end = 468.5;
+    double dt = 0.015;
+    int freq_vtk = 50;
 
-    // Lignes verticales
-    for (int i = 0; i < numLinesX; ++i) {
-        float x = i * u1.getRayonCoupe(); //
-        grid[lineIdx++].position = sf::Vector2f(x, 0);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50); // Gris foncé
-        grid[lineIdx++].position = sf::Vector2f(x, windowHeight);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50);
-    }
-
-    // Lignes horizontales
-    for (int j = 0; j < numLinesY; ++j) {
-        float y = j * u1.getRayonCoupe(); //
-        grid[lineIdx++].position = sf::Vector2f(0, y);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50);
-        grid[lineIdx++].position = sf::Vector2f(windowWidth, y);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50);
-    }
-
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Simulation de Particules Optimisee");
-    window.setFramerateLimit(60);
-    sf::VertexArray particles(sf::Quads, u1.nbParticules() * 4);
-
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        // u1.evoluer()
-
-        u1.algoStormerVerlet(0.015, 0.015);
-
-        int i = 0;
-        float halfSize = particleSize / 2.0f;
-
-        for (auto& p : u1) {
-            Vecteur<2> pos = p.getPos();
-            float x = static_cast<float>(pos[0]);
-            float y = static_cast<float>(pos[1]);
-
-            // Définit les 4 coins du carré représentant la particule
-            particles[i + 0].position = sf::Vector2f(x - halfSize, y - halfSize);
-            particles[i + 1].position = sf::Vector2f(x + halfSize, y - halfSize);
-            particles[i + 2].position = sf::Vector2f(x + halfSize, y + halfSize);
-            particles[i + 3].position = sf::Vector2f(x - halfSize, y + halfSize);
-
-            particles[i + 0].texCoords = sf::Vector2f(0, 0);
-            particles[i + 1].texCoords = sf::Vector2f(64, 0);
-            particles[i + 2].texCoords = sf::Vector2f(64, 64);
-            particles[i + 3].texCoords = sf::Vector2f(0, 64);
-
-            for(int j=0; j<4; ++j) particles[i + j].color = sf::Color::White;
-            i += 4;
-        }
-
-        window.clear(sf::Color::Black);
-        window.draw(grid);
-        window.draw(particles, &circleTexture);
-        window.display();
+    try {
+        u1.algoStormerVerlet(t_end, dt, 1.0, 1.0, 0.0, 0.0, freq_vtk, "output_sys_sol");
+        std::cout << "Simulation terminée avec succès dans le dossier 'output_sys_sol/' !\n";
+    } catch (const std::exception& e) {
+        std::cerr << "Erreur : " << e.what() << "\n";
     }
 
     return 0;
@@ -112,45 +33,13 @@ Univers<2> create_sys(Vecteur<2> dimensions) {
     std::list<Particule<2>> particleList;
 
     // Soleil
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{30.0, 30.0},
-        Vecteur<2>{0.0, 0.0},
-        1.0,
-        0, "Soleil"
-        }
-    );
-
+    particleList.emplace_back(Particule<2>{Vecteur<2>{30.0, 30.0}, Vecteur<2>{0.0, 0.0}, 1.0, 0, "Soleil"});
     // Terre
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{30.0, 31.0},
-        Vecteur<2>{-1.0, 0.0},
-        3.0e-6,
-        1, "Terre"
-        }
-    );
-
+    particleList.emplace_back(Particule<2>{Vecteur<2>{30.0, 31.0}, Vecteur<2>{-1.0, 0.0}, 3.0e-6, 1, "Terre"});
     // Jupiter
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{30.0, 35.36},
-        Vecteur<2>{-0.425, 0.0},
-        9.55e-4,
-        2, "Jupiter"
-        }
-    );
-
+    particleList.emplace_back(Particule<2>{Vecteur<2>{30.0, 35.36}, Vecteur<2>{-0.425, 0.0}, 9.55e-4, 2, "Jupiter"});
     // Halley
-    particleList.emplace_back(
-        Particule<2>{
-        Vecteur<2>{64.75, 30.0},
-        Vecteur<2>{0.0, 0.0296},
-        1e-14,
-        3, "Halley"
-        }
-    );
+    particleList.emplace_back(Particule<2>{Vecteur<2>{64.75, 30.0}, Vecteur<2>{0.0, 0.0296}, 1e-14, 3, "Halley"});
 
-    Univers u1{particleList, dimensions};
-    return u1;
+    return Univers<2>{particleList, dimensions, 100.0}; // r_cut grand pour couvrir le sys solaire
 }

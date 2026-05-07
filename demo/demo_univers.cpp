@@ -1,106 +1,28 @@
-#include <random>
-#include <chrono>
 #include <iostream>
 #include <list>
-#include <SFML/Graphics.hpp>
 #include <vector>
 
 #include "univers.hpp"
 
-/**
- * @brief Visualisation d'un univers de particules
- * 
- * Crée une fenêtre graphique SFML et affiche un système de 100 particules en 2D avec sf::VertexArray.
- * 
- * @return 0 si l'exécution s'est déroulée correctement
- */
 int main() {
-    sf::RenderTexture rt;
-    rt.create(64, 64);
-    rt.clear(sf::Color::Transparent);
-    sf::CircleShape circle(32);
-    circle.setFillColor(sf::Color::White);
-    rt.draw(circle);
-    rt.display();
-    sf::Texture circleTexture = rt.getTexture();
-    circleTexture.setSmooth(true);
-
     const unsigned int windowWidth = 400;
     const unsigned int windowHeight = 300;
-    Vecteur<2> dimensions;
-    dimensions[0] = static_cast<double>(windowWidth);
-    dimensions[1] = static_cast<double>(windowHeight);
-    const float particleSize = 2.0f;
+    Vecteur<2> dimensions{static_cast<double>(windowWidth), static_cast<double>(windowHeight)};
+    
+    // Univers avec 100 particules générées aléatoirement
+    Univers<2> u1(100, dimensions, 400.0 / 10.0);
 
-    Univers<2> u1(100, dimensions, 400 / 10.0);
+    std::cout << "Début de la simulation d'un univers aléatoire...\n";
 
-    // Calcul du nombre de lignes nécessaires
-    int numLinesX = u1.getNCells(0) + 1; //
-    int numLinesY = u1.getNCells(1) + 1; //
-    sf::VertexArray grid(sf::Lines, (numLinesX + numLinesY) * 2);
+    double t_end = 50.0; 
+    double dt = 0.015;
+    int freq_vtk = 20;
 
-    int lineIdx = 0;
-
-    // Lignes verticales
-    for (int i = 0; i < numLinesX; ++i) {
-        float x = i * u1.getRayonCoupe(); //
-        grid[lineIdx++].position = sf::Vector2f(x, 0);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50); // Gris foncé
-        grid[lineIdx++].position = sf::Vector2f(x, windowHeight);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50);
-    }
-
-    // Lignes horizontales
-    for (int j = 0; j < numLinesY; ++j) {
-        float y = j * u1.getRayonCoupe(); //
-        grid[lineIdx++].position = sf::Vector2f(0, y);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50);
-        grid[lineIdx++].position = sf::Vector2f(windowWidth, y);
-        grid[lineIdx - 1].color = sf::Color(50, 50, 50);
-    }
-
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Simulation de Particules Optimisee");
-    window.setFramerateLimit(60);
-    sf::VertexArray particles(sf::Quads, u1.nbParticules() * 4);
-
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        // u1.evoluer()
-
-        u1.algoStormerVerlet(0.015, 0.015);
-
-        int i = 0;
-        float halfSize = particleSize / 2.0f;
-
-        for (auto& p : u1) {
-            Vecteur<2> pos = p.getPos();
-            float x = static_cast<float>(pos[0]);
-            float y = static_cast<float>(pos[1]);
-
-            // Définit les 4 coins du carré représentant la particule
-            particles[i + 0].position = sf::Vector2f(x - halfSize, y - halfSize);
-            particles[i + 1].position = sf::Vector2f(x + halfSize, y - halfSize);
-            particles[i + 2].position = sf::Vector2f(x + halfSize, y + halfSize);
-            particles[i + 3].position = sf::Vector2f(x - halfSize, y + halfSize);
-
-            particles[i + 0].texCoords = sf::Vector2f(0, 0);
-            particles[i + 1].texCoords = sf::Vector2f(64, 0);
-            particles[i + 2].texCoords = sf::Vector2f(64, 64);
-            particles[i + 3].texCoords = sf::Vector2f(0, 64);
-
-            for(int j=0; j<4; ++j) particles[i + j].color = sf::Color::White;
-            i += 4;
-        }
-
-        window.clear(sf::Color::Black);
-        window.draw(grid);
-        window.draw(particles, &circleTexture);
-        window.display();
+    try {
+        u1.algoStormerVerlet(t_end, dt, 1.0, 1.0, 0.0, 0.0, freq_vtk, "output_univers");
+        std::cout << "Simulation terminée avec succès dans le dossier 'output_univers/' !\n";
+    } catch (const std::exception& e) {
+        std::cerr << "Erreur : " << e.what() << "\n";
     }
 
     return 0;

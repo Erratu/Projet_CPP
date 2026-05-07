@@ -1,5 +1,8 @@
 #include "vecteur.hpp"
 
+template<int D>
+class Univers;
+
 /**
  * @brief Classe représentant une particule
  *
@@ -19,6 +22,7 @@ private:
     int id; // Identifiant unique
     const char* type; // Catégorie de la particule
 
+    friend class Univers<D>;
 public:
 
     /**
@@ -41,12 +45,17 @@ public:
     void afficher();
 
     const Vecteur<D>& getPos() const { return pos; }
+    const Vecteur<D>& getForce() const { return f; }
+    const Vecteur<D>& getVitesse() const { return v; }
+    double getMasse() const { return masse; }
+    int getId() const { return id; }
+    char getType() const { return type[0]; }
+    
     void updatePosition(double dt);
     void updateV(double dt);
     void resetForce();
     Vecteur<D> dist(const Particule<D>& autre) const;
     void addForce(const Vecteur<D>& force);
-    char getType() const { return type[0]; }
 };
 
 template<int D>
