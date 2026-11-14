@@ -1,36 +1,35 @@
-## Indique qu'elle version de cmake minimale est utilisée.
-cmake_minimum_required (VERSION 3.16.3)
+cmake_minimum_required(VERSION 3.16.3)
 
-## Specifie le nom du projet et le langage de programmation du projet
-project(Lab3 CXX)
+project(NBodyParticleSim 
+    VERSION 1.0.0
+    DESCRIPTION "N-Body Molecular Dynamics & Celestial Mechanics Simulator in C++"
+    LANGUAGES CXX
+)
 
 set(CMAKE_BUILD_TYPE Release)
-## Force le standard 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-## Indique les options de compilations pour le projet
-## -pg : donne la possibilité de faire du profiling
-## -Wall : affiche les warnings
-set(CMAKE_CXX_FLAGS "-Wall")
-find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -O3")
 
-## Définir la localisation des entêtes.
-## include_directories sera propager à l'ensemble du projet
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-## Parcours les sous répertoires contenant les définitions (.cxx)
-## On commence par créer une bibliothèque
 add_subdirectory(src)
 add_subdirectory(demo)
-add_subdirectory(doc)
 
+# Option pour la documentation Doxygen
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+    add_subdirectory(doc)
+endif()
+
+# Tests unitaires GoogleTest
 include(FetchContent)
 FetchContent_Declare(
   googletest
   GIT_REPOSITORY https://github.com/google/googletest.git
   GIT_TAG        v1.15.2
 )
-# For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 

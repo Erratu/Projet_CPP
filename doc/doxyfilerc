@@ -1,5 +1,6 @@
 # Nom du projet
-PROJECT_NAME           = "TP_MALETA"
+PROJECT_NAME           = "N-Body Particle Simulator"
+PROJECT_BRIEF          = "Simulation de dynamique moléculaire et gravitationnelle en C++17"
 
 # Dossiers à documenter
 INPUT                  = @CMAKE_SOURCE_DIR@/include @CMAKE_SOURCE_DIR@/src

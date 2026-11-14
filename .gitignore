@@ -1,0 +1,42 @@
+# Build directories
+build/
+bin/
+lib/
+out/
+cmake-build-*/
+.cache/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+
+# Visual Studio Code / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Simulation outputs
+output/
+output_*/
+*.vtu
+*.vtk
+
+# Doxygen outputs
+docu/
+html/
+latex/
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+*.egg-info/
+venv/
+.venv/
+env/
